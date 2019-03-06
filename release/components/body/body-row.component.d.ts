@@ -15,6 +15,7 @@ export declare class DataTableBodyRowComponent implements DoCheck {
     rowIndex: number;
     displayCheck: any;
     treeStatus: TreeStatus;
+    isEqualSelectionLimit: boolean;
     offsetX: number;
     readonly cssClass: string;
     rowHeight: number;
@@ -28,9 +29,7 @@ export declare class DataTableBodyRowComponent implements DoCheck {
     _columns: any[];
     _innerWidth: number;
     _groupStyles: {
-        left: {};
-        center: {};
-        right: {};
+        [prop: string]: {};
     };
     private _rowDiffer;
     constructor(differs: KeyValueDiffers, scrollbarHelper: ScrollbarHelper, cd: ChangeDetectorRef, element: ElementRef);

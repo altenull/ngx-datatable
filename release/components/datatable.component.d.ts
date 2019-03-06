@@ -1,13 +1,13 @@
-import { ElementRef, EventEmitter, OnInit, QueryList, AfterViewInit, DoCheck, KeyValueDiffers, KeyValueDiffer, ChangeDetectorRef } from '@angular/core';
-import { ScrollbarHelper, DimensionsHelper, ColumnChangesService } from '../services';
-import { ColumnMode, SortType, SelectionType, TableColumn, ContextmenuType } from '../types';
-import { DataTableBodyComponent } from './body';
-import { DatatableGroupHeaderDirective } from './body/body-group-header.directive';
-import { DataTableColumnDirective } from './columns';
-import { DatatableRowDetailDirective } from './row-detail';
-import { DatatableFooterDirective } from './footer';
-import { DataTableHeaderComponent } from './header';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { ElementRef, EventEmitter, OnInit, QueryList, AfterViewInit, DoCheck, KeyValueDiffers, KeyValueDiffer, ChangeDetectorRef } from "@angular/core";
+import { ScrollbarHelper, DimensionsHelper, ColumnChangesService } from "../services";
+import { ColumnMode, SortType, SelectionType, TableColumn, ContextmenuType } from "../types";
+import { DataTableBodyComponent } from "./body";
+import { DatatableGroupHeaderDirective } from "./body/body-group-header.directive";
+import { DataTableColumnDirective } from "./columns";
+import { DatatableRowDetailDirective } from "./row-detail";
+import { DatatableFooterDirective } from "./footer";
+import { DataTableHeaderComponent } from "./header";
+import { BehaviorSubject, Subscription } from "rxjs";
 export declare class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
     private scrollbarHelper;
     private dimensionsHelper;
@@ -103,6 +103,14 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
     * Gets the limit.
     */
     limit: number | undefined;
+    /**
+     * The maximum size for selecting checkbox.
+     * Default value: `undefined`
+     */
+    /**
+    * Gets the Selection Limit.
+    */
+    selectionLimit: number | undefined;
     /**
      * The total count of all rows.
      * Default value: `0`
@@ -373,10 +381,12 @@ export declare class DatatableComponent implements OnInit, DoCheck, AfterViewIni
     _innerWidth: number;
     pageSize: number;
     bodyHeight: number;
+    isEqualSelectionLimit: boolean;
     rowCount: number;
     rowDiffer: KeyValueDiffer<{}, {}>;
     _offsetX: BehaviorSubject<number>;
     _limit: number | undefined;
+    _selectionLimit: number | undefined;
     _count: number;
     _offset: number;
     _rows: any[];

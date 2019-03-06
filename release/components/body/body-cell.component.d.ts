@@ -14,6 +14,7 @@ export declare class DataTableBodyCellComponent implements DoCheck, OnDestroy {
     row: any;
     sorts: any[];
     treeStatus: TreeStatus;
+    isEqualSelectionLimit: boolean;
     activate: EventEmitter<any>;
     treeAction: EventEmitter<any>;
     cellTemplate: ViewContainerRef;

@@ -116,9 +116,9 @@ var DataTableBodyRowComponent = /** @class */ (function () {
         return column.$$id;
     };
     DataTableBodyRowComponent.prototype.buildStylesByGroup = function () {
-        this._groupStyles['left'] = this.calcStylesByGroup('left');
-        this._groupStyles['center'] = this.calcStylesByGroup('center');
-        this._groupStyles['right'] = this.calcStylesByGroup('right');
+        this._groupStyles.left = this.calcStylesByGroup('left');
+        this._groupStyles.center = this.calcStylesByGroup('center');
+        this._groupStyles.right = this.calcStylesByGroup('right');
         this.cd.markForCheck();
     };
     DataTableBodyRowComponent.prototype.calcStylesByGroup = function (group) {
@@ -225,6 +225,10 @@ var DataTableBodyRowComponent = /** @class */ (function () {
     ], DataTableBodyRowComponent.prototype, "treeStatus", void 0);
     __decorate([
         core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataTableBodyRowComponent.prototype, "isEqualSelectionLimit", void 0);
+    __decorate([
+        core_1.Input(),
         __metadata("design:type", Number),
         __metadata("design:paramtypes", [Number])
     ], DataTableBodyRowComponent.prototype, "offsetX", null);
@@ -267,7 +271,7 @@ var DataTableBodyRowComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'datatable-body-row',
             changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-            template: "\n    <div\n      *ngFor=\"let colGroup of _columnsByPin; let i = index; trackBy: trackByGroups\"\n      class=\"datatable-row-{{colGroup.type}} datatable-row-group\"\n      [ngStyle]=\"_groupStyles[colGroup.type]\">\n      <datatable-body-cell\n        *ngFor=\"let column of colGroup.columns; let ii = index; trackBy: columnTrackingFn\"\n        tabindex=\"-1\"\n        [row]=\"row\"\n        [group]=\"group\"\n        [expanded]=\"expanded\"\n        [isSelected]=\"isSelected\"\n        [rowIndex]=\"rowIndex\"\n        [column]=\"column\"\n        [rowHeight]=\"rowHeight\"\n        [displayCheck]=\"displayCheck\"\n        [treeStatus]=\"treeStatus\"\n        (activate)=\"onActivate($event, ii)\"\n        (treeAction)=\"onTreeAction()\">\n      </datatable-body-cell>\n    </div>\n  "
+            template: "\n    <div\n      *ngFor=\"let colGroup of _columnsByPin; let i = index; trackBy: trackByGroups\"\n      class=\"datatable-row-{{colGroup.type}} datatable-row-group\"\n      [ngStyle]=\"_groupStyles[colGroup.type]\">\n      <datatable-body-cell\n        *ngFor=\"let column of colGroup.columns; let ii = index; trackBy: columnTrackingFn\"\n        tabindex=\"-1\"\n        [row]=\"row\"\n        [group]=\"group\"\n        [expanded]=\"expanded\"\n        [isSelected]=\"isSelected\"\n        [rowIndex]=\"rowIndex\"\n        [column]=\"column\"\n        [rowHeight]=\"rowHeight\"\n        [displayCheck]=\"displayCheck\"\n        [treeStatus]=\"treeStatus\"\n        [isEqualSelectionLimit]=\"isEqualSelectionLimit\"\n        (activate)=\"onActivate($event, ii)\"\n        (treeAction)=\"onTreeAction()\">\n      </datatable-body-cell>\n    </div>\n  "
         }),
         __param(1, core_1.SkipSelf()),
         __metadata("design:paramtypes", [core_1.KeyValueDiffers,

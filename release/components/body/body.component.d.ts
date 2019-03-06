@@ -28,6 +28,7 @@ export declare class DataTableBodyComponent implements OnInit, OnDestroy {
     summaryRow: boolean;
     summaryPosition: string;
     summaryHeight: number;
+    isEqualSelectionLimit: boolean;
     pageSize: number;
     rows: any[];
     columns: any[];
